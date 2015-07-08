@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, MigrateCommand
 from flask_mail import Mail
 from config import CONFIG
+from csrf import csrf
 
 # Create extensions without initialization.
 mail = Mail()
@@ -44,6 +45,7 @@ def create_app(config_name):
     # Initialize Flask extensions using the same "init_app" method convention.
     mail.init_app(app)
     db.init_app(app)
+    csrf.init_app(app)
 
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)

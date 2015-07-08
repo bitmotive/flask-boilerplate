@@ -63,9 +63,6 @@ class DefaultConfig(object):
     SECRET_KEY = (os.environ.get('SECRET_KEY') or
                   usage_warning('SECRET_KEY not configured.'))
 
-    # Ensures that DB interactions are committed
-    SQLALCHEMY_COMMIT_ON_TEARDOWN = True
-
     # Called from create_app() after specific configuration is selected
     @staticmethod
     def init_app(app):
